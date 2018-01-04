@@ -220,7 +220,8 @@ else {
             }
 
             for($i = 0; $i < count($obj); $i++) {
-                $sql = 'INSERT INTO saved_players (userID, number, name) VALUES ("' . $user . '", "' . $obj[$i]->{'number'} . '", "' . $obj[$i]->{'name'} . '")';
+                if($obj[$i]->{'id'} == '') $sql = 'INSERT INTO saved_players (userID, number, name) VALUES ("' . $user . '", NULL, "' . $obj[$i]->{'name'} . '")';
+                else $sql = 'INSERT INTO saved_players (userID, number, name) VALUES ("' . $user . '", "' . $obj[$i]->{'id'} . '", "' . $obj[$i]->{'name'} . '")';
                 if ($mysqli->query($sql) === TRUE) {
                     http_response_code(200); // success
                 } else {
