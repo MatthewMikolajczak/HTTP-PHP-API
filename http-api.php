@@ -276,7 +276,7 @@ else {
             else http_response_code(500); // query doesn't work
 
             for($i = 0; $i < count($players); $i++) {
-                $sql = 'INSERT INTO players (gameID, number, name) VALUES ("' . $gameID . '", "' . $players[$i]->{'number'} . '", "' . $players[$i]->{'name'} . '")';
+                $sql = 'INSERT INTO players (gameID, number, name) VALUES ("' . $gameID . '", "' . $players[$i]->{'id'} . '", "' . $players[$i]->{'name'} . '")';
                 if ($mysqli->query($sql) === TRUE) {
                     http_response_code(200); // success
                 } else {
